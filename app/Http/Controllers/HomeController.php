@@ -13,18 +13,19 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function apartment(){
-        $properties = Property::where('type', 'Apartment')->get(); // Fetch properties of type 'Apartment'
-        return view('properties', compact('properties')); // Return the view with the properties
-    }
+    $properties = Property::where('type', 'Apartment')->paginate(2);
+    return view('properties', compact('properties'));
+}
 
-    public function villa(){
-        $properties = Property::where('type', 'Luxury Villa')->get();
-        return view('properties',compact('properties'));
-    }
-    public function penthouse(){
-        $properties = Property::where('type', 'Penthouse')->get();
-        return view('properties',compact('properties'));
-    }
+public function villa(){
+    $properties = Property::where('type', 'Luxury Villa')->paginate(2);
+    return view('properties', compact('properties'));
+}
+
+public function penthouse(){
+    $properties = Property::where('type', 'Penthouse')->paginate(2);
+    return view('properties', compact('properties'));
+}
 
 
 
@@ -43,7 +44,7 @@ class HomeController extends Controller
 
         $penthouseDeals = BestDeal::where('type', 'Penthouse')->get();
 
-        $properties = Property::all()->take(3); // ✅ fetch properties
+$properties = Property::paginate(2);
 
         $contact = Contact::first();
 

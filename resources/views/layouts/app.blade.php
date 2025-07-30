@@ -51,18 +51,8 @@ https://templatemo.com/tm-591-villa-agency
 
     @include('layouts.footer')
     <!-- Custom JS to hide preloader -->
-<script>
-  $(document).ready(function(){
-    $(".owl-banner").owlCarousel({
-      items: 1,
-      loop: true,
-      autoplay: true,        // ❌ OFF autoplay
-      nav: true,              // ✅ Show arrows
-      dots: true              // ✅ Show dots
-    });
-  });
-</script>
 
+@yield('scripts')
     </body>
   <!-- Correct Order -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

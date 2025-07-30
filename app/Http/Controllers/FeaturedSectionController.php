@@ -11,8 +11,11 @@ class FeaturedSectionController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     //view Featured Section and message
     public function index()
     {
+
         $featured = FeaturedSection::all();
         $headerMessages = Message::latest()->take(5)->get();
 

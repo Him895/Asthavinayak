@@ -16,12 +16,12 @@ return view('admin2.layout.properteysection.properteysection', compact('properte
 }
 
 public function property(){
-    $properties = Property::all(); // Fetch all properties
+    $properties = Property::paginate(2); // Fetch all properties
     return view('properties',compact('properties'));
 }
 
 public function pagination(){
-    $properties = Property::paginate(6); // Fetch properties with pagination
+    $properties = Property::paginate(2); // Fetch properties with pagination
     return view('properties', compact('properties')); // Return the view with the properties
 }
 

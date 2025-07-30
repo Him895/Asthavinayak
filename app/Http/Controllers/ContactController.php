@@ -6,18 +6,20 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
-{   public function viewcontact()
+{
+    // View contact details
+    public function viewcontact()
     {
        $contacts = Contact::first();
          return view('admin2.layout.contact.contact', compact('contacts'));
     }
-
+// Fetch contact details for table view
     public function fetchtable()
     {
         $contacts = Contact::all();
         return view('admin2.layout.contact.contacttable', compact('contacts'));
     }
-
+// Store contact details
     public function store(Request $req)
     {
         $req->validate([
@@ -37,13 +39,13 @@ class ContactController extends Controller
         ]);
  return redirect()->back()->with('success','ontact details added successfully');
   }
-
+// Edit contact details
     public function edit($id)
     {
         $contacts = Contact::findorfail($id);
         return view('admin2.layout.contact.edit', compact('contacts'));
     }
-
+// Update contact details
     public function update(Request $req,$id)
     {
         $req->validate([

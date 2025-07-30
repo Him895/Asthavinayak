@@ -37,7 +37,7 @@
               <li>Floor: <span>{{$property->details['Floor'] ?? '-' }}</span></li>
               <li>Parking: <span>{{$property->details['Parkings'] ?? '-' }}</span></li>
             </ul>
-            
+
             <div class="main-button">
               <a href="#">Schedule a visit</a>
             </div>
@@ -47,15 +47,11 @@
           </div>
 
       <div class="row">
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">>></a></li>
-          </ul>
-        </div>
-      </div>
+  <div class="col-lg-12">
+    {{ $properties->links('vendor.pagination.custom') }}
+  </div>
+</div>
+
     </div>
   </div>
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BestDealController extends Controller
 {
+    //view all best deals
     public function index(){
         $deals = BestDeal::all();
                 $headerMessages = Message::latest()->take(5)->get();
@@ -16,12 +17,14 @@ class BestDealController extends Controller
        return view('admin2.layout.bestdealsSection.bestdealssection', compact('deals','headerMessages'));
 
     }
-
+// view all best deals table
     public function fetchtable(){
         $deals = BestDeal::all();
         return view('admin2.layout.bestdealsSection.bestdealtable', compact('deals'));
     }
 
+
+    // store best deals
     public function store(Request $req){
         $req->validate([
             'type' => 'required||string',
@@ -54,12 +57,12 @@ class BestDealController extends Controller
         ]);
         return redirect()->back()->with('success','Best Deals added successfully');
     }
-
+// edit best deals
     public function edit($id){
         $deals = BestDeal::findOrFail($id);
         return view('admin2.layout.bestdealsSection.edit', compact('deals'));
     }
-
+// update best deals
     public function update(Request $req){
         $req->validate([
             'type' => 'required|string',
@@ -94,6 +97,7 @@ class BestDealController extends Controller
 
     return redirect()->route('admin2.bestdeals.index')->with('success', 'BeastDeal Section updated successfully!');
     }
+// delete best deals
     public function destroy($id){
         $bestDeal = BestDeal::findOrFail($id);
         $bestDeal->delete();
